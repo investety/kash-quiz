@@ -106,7 +106,8 @@ const QUESTIONS: Question[] = [
   },
   {
     id: 7,
-    question: "What technology is used in the Kash resolution process to prove that an AI model correctly analyzed authentic data?",
+    question:
+      "What technology is used in the Kash resolution process to prove that an AI model correctly analyzed authentic data?",
     options: [
       { id: "A", text: "zkTLS" },
       { id: "B", text: "EZKL Zero-Knowledge ML" },
@@ -194,6 +195,17 @@ export default function Page() {
     setIncorrectCount(0);
     setStreak(0);
     setBestStreak(0);
+  };
+
+  const shareOnTwitter = () => {
+    const text = `I scored ${correctCount}/${total} on Kash Quiz 🟡\n\nTry it yourself 👇`;
+    const url = "https://kash-quiz-lyart.vercel.app";
+
+    const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
+      text
+    )}&url=${encodeURIComponent(url)}`;
+
+    window.open(twitterUrl, "_blank");
   };
 
   const chooseAnswer = (optionId: string) => {
@@ -317,8 +329,6 @@ export default function Page() {
       <div className="absolute inset-0 bg-[rgba(20,14,10,0.78)]" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(246,207,0,0.10),transparent_28%),linear-gradient(180deg,rgba(31,20,12,0.35)_0%,rgba(17,12,8,0.82)_100%)]" />
 
-      
-
       <div className="relative z-10 mx-auto flex min-h-screen max-w-[920px] items-center justify-center px-4 py-10 sm:px-6">
         <div className="w-full">
           {screen === "start" && (
@@ -345,8 +355,6 @@ export default function Page() {
                 Test your knowledge and see how well you understand Kash
               </p>
 
-              
-
               <div className="relative overflow-hidden rounded-[28px] border border-[rgba(255,255,255,0.12)] bg-[rgba(255,255,255,0.045)] p-6 shadow-[0_20px_80px_rgba(0,0,0,0.34)] backdrop-blur-xl sm:p-7">
                 <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.04)_0%,rgba(255,255,255,0.01)_100%)]" />
                 <div className="relative">
@@ -355,21 +363,27 @@ export default function Page() {
                       <div className="text-[30px] font-semibold leading-none text-[#fff7ef]">
                         10
                       </div>
-                      <div className="mt-2 text-[12px] text-[#aa9685]">Questions</div>
+                      <div className="mt-2 text-[12px] text-[#aa9685]">
+                        Questions
+                      </div>
                     </div>
 
                     <div className="border-x border-[rgba(255,255,255,0.10)]">
                       <div className="text-[30px] font-semibold leading-none text-[#fff7ef]">
                         4
                       </div>
-                      <div className="mt-2 text-[12px] text-[#aa9685]">Options Each</div>
+                      <div className="mt-2 text-[12px] text-[#aa9685]">
+                        Options Each
+                      </div>
                     </div>
 
                     <div>
                       <div className="text-[30px] font-semibold leading-none text-[#fff7ef]">
                         100%
                       </div>
-                      <div className="mt-2 text-[12px] text-[#aa9685]">Max Score</div>
+                      <div className="mt-2 text-[12px] text-[#aa9685]">
+                        Max Score
+                      </div>
                     </div>
                   </div>
 
@@ -397,29 +411,29 @@ export default function Page() {
                   </button>
                 </div>
               </div>
-<p className="mt-8 text-[13px] text-[#9f8b79]">
-  Powered by{" "}
-  <a
-    href="https://discord.gg/Rc8bZjexhK"
-    target="_blank"
-    rel="noreferrer"
-    className="underline underline-offset-2 transition hover:text-[#f6cf00]"
-  >
-    Kash
-  </a>
-  . Built by{" "}
-  <a
-    href="https://x.com/InvestSecrety"
-    target="_blank"
-    rel="noreferrer"
-    className="underline underline-offset-2 transition hover:text-[#f6cf00]"
-  >
-    InvestSecrety
-  </a>
-  .
-</p>
-            </section>
 
+              <p className="mt-8 text-[13px] text-[#9f8b79]">
+                Powered by{" "}
+                <a
+                  href="https://discord.gg/Rc8bZjexhK"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="underline underline-offset-2 transition hover:text-[#f6cf00]"
+                >
+                  Kash
+                </a>
+                . Built by{" "}
+                <a
+                  href="https://x.com/InvestSecrety"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="underline underline-offset-2 transition hover:text-[#f6cf00]"
+                >
+                  InvestSecrety
+                </a>
+                .
+              </p>
+            </section>
           )}
 
           {screen === "quiz" && (
@@ -708,6 +722,20 @@ export default function Page() {
                     <path d="M3 3v6h6" />
                   </svg>
                   Play Again
+                </button>
+
+                <button
+                  onClick={shareOnTwitter}
+                  className="mt-3 inline-flex h-[48px] w-full items-center justify-center gap-2 rounded-[14px] px-6 text-[16px] font-semibold transition hover:brightness-110"
+                  style={{
+                    backgroundColor: "#000",
+                    color: "#fff",
+                  }}
+                >
+                  <svg viewBox="0 0 24 24" className="h-[18px] w-[18px]" fill="currentColor">
+                    <path d="M18.244 2H21l-6.56 7.5L22 22h-6.828l-5.338-6.994L3.5 22H1l7.022-8.02L2 2h6.914l4.824 6.356L18.244 2z" />
+                  </svg>
+                  Share on X
                 </button>
               </div>
 
