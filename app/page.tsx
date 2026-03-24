@@ -197,16 +197,25 @@ export default function Page() {
     setBestStreak(0);
   };
 
-  const shareOnTwitter = () => {
-    const text = `I scored ${correctCount}/${total} on Kash Quiz 🟡\n\nTry it yourself 👇`;
-    const url = "https://kash-quiz-lyart.vercel.app";
+const shareOnTwitter = () => {
+  const percent = Math.round((correctCount / total) * 100);
 
-    const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
-      text
-    )}&url=${encodeURIComponent(url)}`;
+  const text = `I scored ${correctCount}/${total} (${percent}%) on Kash Quiz 🟡
 
-    window.open(twitterUrl, "_blank");
-  };
+Can you beat me? 👀
+
+Thanks @InvestSecrety for the quest 🙌
+
+Try it 👇`;
+
+  const url = "https://kash-quiz-lyart.vercel.app";
+
+  const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
+    text
+  )}&url=${encodeURIComponent(url)}`;
+
+  window.open(twitterUrl, "_blank");
+};
 
   const chooseAnswer = (optionId: string) => {
     if (revealed) return;
@@ -724,19 +733,16 @@ export default function Page() {
                   Play Again
                 </button>
 
-                <button
-                  onClick={shareOnTwitter}
-                  className="mt-3 inline-flex h-[48px] w-full items-center justify-center gap-2 rounded-[14px] px-6 text-[16px] font-semibold transition hover:brightness-110"
-                  style={{
-                    backgroundColor: "#000",
-                    color: "#fff",
-                  }}
-                >
-                  <svg viewBox="0 0 24 24" className="h-[18px] w-[18px]" fill="currentColor">
-                    <path d="M18.244 2H21l-6.56 7.5L22 22h-6.828l-5.338-6.994L3.5 22H1l7.022-8.02L2 2h6.914l4.824 6.356L18.244 2z" />
-                  </svg>
-                  Share on X
-                </button>
+               <button
+  onClick={shareOnTwitter}
+  className="mt-3 inline-flex h-[48px] w-full items-center justify-center gap-2 rounded-[14px] px-6 text-[16px] font-semibold transition hover:brightness-110"
+  style={{
+    backgroundColor: "#000",
+    color: "#fff",
+  }}
+>
+  Share on X
+</button>
               </div>
 
               <p className="mt-8 text-[13px] text-[#9f8b79]">
