@@ -208,7 +208,7 @@ Thanks @InvestSecrety for the quest 🙌
 
 Try it 👇`;
 
-  const url = "https://kash-quiz-lyart.vercel.app";
+  const url = "https://kash-bot-quiz.vercel.app/";
 
   const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
     text
